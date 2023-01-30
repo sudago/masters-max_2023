@@ -3,11 +3,13 @@ package cs16.cs05;
 public class Rectangle extends Polygon {
     public Rectangle(int[][] dots) {
         super(dots);
+        calculateResult =
+                calculator.calculateRectangleSize(lines);
     }
+
+    // 입력 (10,10)-(22,10)-(22,18)-(10,18)
     @Override
-    public void calculate() {
-        super.calculate();
-        // super.lines에 들어있는 값으로 사각형 넓이 구하기.
-        // super.calculator.calculateRectangleSize(); 하기
+    public void showResult(){
+        System.out.println("사각형의 넓이는 " + calculateResult);
     }
 }

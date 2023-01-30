@@ -8,11 +8,16 @@ public class TestTest {
     public static void main(String[] args) throws IOException {
         // input을 받는다.
         Input input = new Input(new BufferedReader(new InputStreamReader(System.in)));
-        // 이게 맞는지 모르겠음.
-        Polygon polygon = input.polygon;
+
+        // input 받은 좌표의 개수에 따라 polygon의 Type이 결정됨.
+        Polygon polygon = input.takePolygonType();
+
         // 계산한다.
-        polygon.calculate();
-        // 콘솔에 자동으로 출력되게 하기.
-        polygon.showResultNumber();
+        // 콘솔에 polygon type에 따라 다른 결과가 출력된다.
+        polygon.showResult();
+
+        // 클래스 확인
+        // System.out.println(polygon.getClass().getName());
+
     } // main - end
 } // TestTest - end
