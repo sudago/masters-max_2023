@@ -1,4 +1,4 @@
-package cs16.cs08;
+package cs16.cs08.mission1;
 
 import java.util.HashSet;
 import java.util.Iterator;
