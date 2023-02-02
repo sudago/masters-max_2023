@@ -75,8 +75,11 @@ public class SquadSet {
         SquadSet complement = new SquadSet(squadSetA.complement(squadSetB.a));
         SquadSet intersect = new SquadSet(squadSetA.intersect(squadSetB.a));
 
-        System.out.println(Arrays.toString(sum.resultAll()));
-        System.out.println(Arrays.toString(complement.resultAll()));
-        System.out.println(Arrays.toString(intersect.resultAll()));
+        System.out.println("A 집합 = " + squadSetA.a);
+        System.out.println("B 집합 = " + squadSetB.a);
+
+        System.out.println("합집합 sum = " + Arrays.toString(sum.resultAll()));
+        System.out.println("차집합 complement = " + Arrays.toString(complement.resultAll()));
+        System.out.println("교집합 intersect = " + Arrays.toString(intersect.resultAll()));
     }
 }
