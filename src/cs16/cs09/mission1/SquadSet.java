@@ -7,16 +7,6 @@ import java.util.*;
     - List, ArrayList 만 사용 가능.
  */
 
-/* record 문 사용 -> 멤버 변수 private 으로 변경하여 일반 class 로 변경.
-public class SquadSet {
-    public List<Integer> result;
-
-    public SquadSet(List<Integer> result){
-        this.result = result;
-    }
-}
- */
-
 /*
  resultAll() 과 멤버변수 result 는 static 아님.
  */
