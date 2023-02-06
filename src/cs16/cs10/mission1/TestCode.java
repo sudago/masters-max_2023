@@ -16,7 +16,8 @@ public class TestCode {
 
         List<Process> randomList = getRandomList(processList);
         Program program = new Program(randomList);
-
+        program.workProcess();
+//        program.getProcessList(); // 확인용
     }
 
     public static List<Process> getRandomList(List<Process> processList) {
