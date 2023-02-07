@@ -15,8 +15,9 @@ public class TestCode {
         processList.add(new Process("F", 21));
 
         List<Process> randomList = getRandomList(processList);
-        Program program = new Program(randomList);
-        program.workProcess();
+        OS OS = new OS(randomList, "roundRobin");
+        OS.PCB();
+        OS.showInfo();
 //        program.getProcessList(); // 확인용
     }
 
