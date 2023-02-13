@@ -1,47 +1,42 @@
 package cs16.cs12.html;
 
-import org.w3c.dom.Document;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.StringReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
 
-public class Connect {
-    public static void main(String[] args) throws Exception {
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+
+//        for (int i = 0; i < 8; i++) {
+//            System.out.println(getBlog().get(i).toString());
+//        }
+
         try {
-            URL url = new URL("https://www.naver.com/");
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setDoOutput(true);
-            connection.setRequestMethod("POST");
-            connection.addRequestProperty("Content-Type", "text/xml; charset=uft-8");
+//            String URL = "https://jforj.tistory.com/68";
+            String URL = "https://www.naver.com";
+            Connection conn = Jsoup.connect(URL);
 
-            String inputLine;
-            String returnStr = "";
-            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8));
+            Document document = conn.get();
 
-            while ((inputLine = in.readLine()) != null) {
-                returnStr += inputLine;
-            }
+            Elements parsingDivs = document.getElementsByClass("special_bg"); // class가 parsingDiv인 element 찾기
+            Element parsingDiv = parsingDivs.get(0);
 
-            InputSource is = new InputSource(new StringReader(returnStr));
-            DocumentBuilder dBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-            Document doc = dBuilder.parse(is);
+            Elements parsingTitle = parsingDiv.getElementsByClass("group_flex"); // id가 parsingTitle인 element 찾기
+            Element test = parsingTitle.get(0);
+            Elements parsingContents = test.getElementsByClass("logo_area"); // id가 parsingContents인 element 찾기
 
-            if (doc == null) {
-                throw new Exception("ERROR :: document is null");
-            }
-            System.out.println(returnStr);
-        } catch (IOException | ParserConfigurationException | SAXException e) {
-            throw new RuntimeException(e);
+            String title = parsingContents.get(0).text(); // 첫 번째 h3태그의 text값 찾기
+//            String contents = parsingContents.getElementsByTag("p").get(0).text(); // 첫 번째 p태그의 text값 찾기
+
+            System.out.println("파싱한 제목: " + title);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         }
 
     }
